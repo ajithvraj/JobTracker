@@ -1,5 +1,4 @@
 ﻿using JobTracker.Domain.Common;
-using JobTracker.Domain.Enums;
 using JobTracker.Domain.Enums.ApplicationEnums;
 using System;
 using System.Collections.Generic;

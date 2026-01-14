@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobTracker.Domain.Enums
+namespace JobTracker.Domain.Enums.ApplicationEnums
 {
     public enum ApplicationSource
     {
