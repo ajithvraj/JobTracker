@@ -14,6 +14,7 @@ namespace JobTracker.Application.Auth
         Task RegisterAsync(RegisterRequestDto dto);
         Task VerifyEmailAsync(VerifyEmailRequestDto dto); 
         Task<AuthResponseDto?>LoginAsync(LoginRequestDto dto);
+        Task SaveEmailsettingsAsync(int userId , UpdateEmailSettingsDto dto);
 
 
 

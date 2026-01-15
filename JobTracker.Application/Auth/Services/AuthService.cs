@@ -15,13 +15,15 @@ namespace JobTracker.Application.Auth.Services
     {
         private readonly IUserRepository _user;
         private readonly ITokenService _token;
-        private readonly IVerificationService _verify;   
+        private readonly IVerificationService _verify;
+        private readonly IEncryptionService _encrypt;
 
-        public AuthService (IUserRepository user, ITokenService token,IVerificationService verify)
+        public AuthService (IUserRepository user, ITokenService token,IVerificationService verify, IEncryptionService encrypt )
         {
            _user = user;
             _token = token;
             _verify = verify;
+            _encrypt = encrypt;
         }
         public async Task RegisterAsync(RegisterRequestDto dto)
         {
@@ -66,6 +68,22 @@ namespace JobTracker.Application.Auth.Services
                 Email = user.Email,
                 Role = user.Role
             };
+        }
+
+
+        public async Task SaveEmailsettingsAsync( int userId , UpdateEmailSettingsDto dto )
+        {
+
+            var user = await _user.GetByIdAsync(userId); 
+            if(userId == null)
+            {
+                throw new Exception("User not found");
+
+            }
+
+            user.SmtpPassword = _encrypt.Encrypt(dto.Smtpassword);
+            await _user.SaveAsync();
+
         }
 
 

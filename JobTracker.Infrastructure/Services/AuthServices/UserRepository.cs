@@ -27,6 +27,12 @@ namespace JobTracker.Infrastructure.Services.AuthServices
 
         }
 
+        public async Task<User?> GetByIdAsync(int id)
+        {
+            return await _db.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+        }
+
         public async Task AddAsync(User user)
         {
 

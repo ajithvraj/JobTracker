@@ -11,6 +11,7 @@ namespace JobTracker.Application.Repository.AuthRepository
     {
 
         Task<User?> GetByEmailAsync(string email);
+        Task<User?> GetByIdAsync(int id);
         Task AddAsync(User user);
         Task SaveAsync();
 

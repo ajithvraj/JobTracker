@@ -14,6 +14,8 @@ namespace JobTracker.Domain.Entities
         public string Email { get; set; } = null!;
 
         public string PasswordHash { get; set; } = null!;
+        public string? SmtpPassword { get; set; }
+
         public string Role { get; set; } = "Admin";
 
 
