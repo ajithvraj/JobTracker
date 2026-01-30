@@ -5,11 +5,15 @@ using JobTracker.Api.Middleware;
 using JobTracker.Application.Auth;
 using JobTracker.Application.Auth.Services;
 using JobTracker.Application.CommonInterfaces;
+using JobTracker.Application.Core;
+using JobTracker.Application.Core.Services;
 using JobTracker.Application.Repository.AuthRepository;
+using JobTracker.Application.Repository.CoreRepository;
 using JobTracker.Application.Validators.AuthValidators;
 using JobTracker.Infrastructure.CommonServices;
 using JobTracker.Infrastructure.Data;
 using JobTracker.Infrastructure.Services.AuthServices;
+using JobTracker.Infrastructure.Services.CoreServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -46,6 +50,16 @@ namespace JobTracker.Api
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IVerificationService, VerificationService>();
             builder.Services.AddScoped<IEncryptionService, EncryptionService>();
+            builder.Services.AddScoped<IFileStorageService, FileStorageService>(); 
+            builder.Services.AddScoped<IResumeRepository,ResumeRepository>();
+            builder.Services.AddScoped<IResumeService,ResumeService>();
+            builder.Services.AddScoped<IEmailServices, SmtpEmailService>();
+            builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
+            builder.Services.AddScoped<IJobApplicationRepository , JobApplicationRepository>();
+            builder.Services.AddScoped<IRecruiterRepository, RecruiterRepository>();
+            builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
+            builder.Services.AddScoped<IApplicationStatus, ApplicationStatus>();
+
 
             // FluentValidation
             builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();

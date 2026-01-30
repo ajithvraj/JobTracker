@@ -20,6 +20,7 @@ namespace JobTracker.Infrastructure.Data
         public DbSet<EmailLog> EmailLogs => Set<EmailLog>(); 
         public DbSet<FollowUpTask> FollowUpTasks => Set<FollowUpTask>();
         public DbSet<EmailTemplate> EmailTemplates => Set<EmailTemplate>();
+        public DbSet<Resume> Resumes => Set<Resume>();
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

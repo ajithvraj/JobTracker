@@ -10,10 +10,12 @@ namespace JobTracker.Domain.Enums.ApplicationEnums
     {
 
         Applied = 1 ,
-        Viewed = 2 ,
-        Interview = 3 ,
-        Rejected = 4 ,
-        Offer = 5
+        FollowUpSent = 2 ,
+        Viewed = 3 ,
+        Interview = 4 ,
+        Offer = 5,
+        Rejected = 6,
+        Closed = 7 ,
 
 
     }

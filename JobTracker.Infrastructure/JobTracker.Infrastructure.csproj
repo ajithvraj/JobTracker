@@ -22,5 +22,11 @@
     <ProjectReference Include="..\JobTracker.Application\JobTracker.Application.csproj" />
     <ProjectReference Include="..\JobTracker.Domain\JobTracker.Domain.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+  
+	
+	
 
 </Project>

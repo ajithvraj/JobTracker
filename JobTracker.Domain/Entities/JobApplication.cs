@@ -17,7 +17,7 @@ namespace JobTracker.Domain.Entities
         public int CompanyId { get; set; } 
         public Company? Company { get; set; } 
 
-        public int RecruiterId { get; set; } 
+        public int? RecruiterId { get; set; } 
         public Recruiter? Recruiter { get; set; }
 
 
