@@ -4,6 +4,7 @@ using FluentValidation;
 using JobTracker.Api.Middleware;
 using JobTracker.Application.Auth;
 using JobTracker.Application.Auth.Services;
+using JobTracker.Application.BackgroundJobs;
 using JobTracker.Application.CommonInterfaces;
 using JobTracker.Application.Core;
 using JobTracker.Application.Core.Services;
@@ -44,7 +45,7 @@ namespace JobTracker.Api
             builder.Services.AddDataProtection();
 
             // Dependency Injection
-            builder.Services.AddScoped<IEmailServices, SmtpEmailService>();
+            builder.Services.AddScoped<ISmtpServices, SmtpService>();
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IAuthService, AuthService>();
@@ -53,12 +54,21 @@ namespace JobTracker.Api
             builder.Services.AddScoped<IFileStorageService, FileStorageService>(); 
             builder.Services.AddScoped<IResumeRepository,ResumeRepository>();
             builder.Services.AddScoped<IResumeService,ResumeService>();
-            builder.Services.AddScoped<IEmailServices, SmtpEmailService>();
+            builder.Services.AddScoped<ISmtpServices, SmtpService>();
             builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
             builder.Services.AddScoped<IJobApplicationRepository , JobApplicationRepository>();
             builder.Services.AddScoped<IRecruiterRepository, RecruiterRepository>();
             builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
             builder.Services.AddScoped<IApplicationStatus, ApplicationStatus>();
+            builder.Services.AddScoped<IEmailTemplateRepository, EmailTemplateRepository>();
+            builder.Services.AddScoped<IEmailLogRepository, EmailLogRepository>();
+            builder.Services.AddScoped<IFollowUpService, FollowUpService>();
+            builder.Services.AddScoped<ITemplateRenderer, TemplateRenderer>();
+            builder.Services.AddHostedService<FollowUpScheduler>();
+            builder.Services.AddScoped<IEmailServices, EmailSmtpServices>();
+
+
+
 
 
             // FluentValidation

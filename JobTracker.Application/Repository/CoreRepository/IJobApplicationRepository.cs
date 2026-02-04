@@ -12,6 +12,9 @@ namespace JobTracker.Application.Repository.CoreRepository
     {
         Task<int> CreateAsync(JobApplication application);
         Task<List<JobApplicationResponseDto>> GetAllByUserAsync(int userId);
+        Task<JobApplication> GetWithDetailsAsync(int jobApplicationId);
+        Task UpdateAsync(JobApplication application);
+        Task<List<JobApplication>> GetDueEmailFollowUpsAsync(DateTime dueDate);
 
     }
 }

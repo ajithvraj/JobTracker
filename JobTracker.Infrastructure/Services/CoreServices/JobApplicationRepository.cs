@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace JobTracker.Infrastructure.Services.CoreServices
 {
-    public  class JobApplicationRepository : IJobApplicationRepository
+    public class JobApplicationRepository : IJobApplicationRepository
     {
 
         private readonly JobTrackerDbContext _db;
 
-      public JobApplicationRepository(JobTrackerDbContext db) 
+        public JobApplicationRepository(JobTrackerDbContext db)
         {
 
             _db = db;
@@ -46,12 +46,37 @@ namespace JobTracker.Infrastructure.Services.CoreServices
                 );
 
             return result.ToList();
+        }
+             public async Task<JobApplication> GetWithDetailsAsync(int jobApplicationId)
+        {
+            return await _db.JobApplications
+                .Include(x => x.Company)
+                .Include(x => x.Recruiter)
+                .Include(x => x.User)
+                .FirstAsync(x => x.Id == jobApplicationId);
+        }
+
+        public async Task UpdateAsync(JobApplication application)
+        {
+            _db.JobApplications.Update(application);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task<List<JobApplication>> GetDueEmailFollowUpsAsync(DateTime dueDate)
+        {
+
+            return await _db.JobApplications.Where(x => x.Source == Domain.Enums.ApplicationEnums.ApplicationSource.Email && x.Status == Domain.Enums.ApplicationEnums.ApplicationStatus.Applied && x.AppliedDate <= dueDate && x.LastContactDate == null).ToListAsync();
+
 
         }
-            
+
+
+
+
 
 
 
 
     }
 }
+

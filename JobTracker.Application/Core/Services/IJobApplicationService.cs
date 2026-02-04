@@ -13,6 +13,7 @@ namespace JobTracker.Application.Core.Services
         Task<int> CreateAsync(int userId,CreateJobApplicationRequestDto dto);
         Task<List<JobApplicationResponseDto>> GetAllAsync(int userId);
         Task<List<JobApplicationResponseDto>> GetFilteredAsync(int userId, JobApplicationfilterDto filter);
+       
 
 
     }

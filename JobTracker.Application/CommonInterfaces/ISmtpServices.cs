@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace JobTracker.Application.CommonInterfaces
 {
-    public interface IEmailServices
+    public interface ISmtpServices
     {
-        Task SendAsync(int userId , string to, string subject, string body);
+
+        Task SendAsync(string to , string subject, string body);
+
 
     }
 }

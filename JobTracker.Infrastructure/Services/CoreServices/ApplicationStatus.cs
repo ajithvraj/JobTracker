@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using JobTracker.Application.DTOs.CoreDTOs;
 using JobTracker.Application.Repository.CoreRepository;
+using JobTracker.Domain.Entities;
 using JobTracker.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -44,6 +45,19 @@ namespace JobTracker.Infrastructure.Services.CoreServices
 
         }
 
+        public async Task<JobApplication?> GetByIdAsync(int id)
+        {
+            return await _db.JobApplications.FindAsync(id); 
+
+        }
+
+        public async Task UpdateAsync(JobApplication app)
+        {
+
+            _db.JobApplications.Update(app);
+            await _db.SaveChangesAsync();
+
+        }
 
     }
 }

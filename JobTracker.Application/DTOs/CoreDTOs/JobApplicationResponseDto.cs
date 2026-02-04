@@ -26,6 +26,8 @@ namespace JobTracker.Application.DTOs.CoreDTOs
         public string ResumeVersion { get; set; } = null!;
         public DateTime? LastContactDate { get; set; }
 
+        public bool CanSendFollowUp { get; set; }
+
 
 
 

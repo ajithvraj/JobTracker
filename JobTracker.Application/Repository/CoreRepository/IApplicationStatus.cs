@@ -1,4 +1,5 @@
 ﻿using JobTracker.Application.DTOs.CoreDTOs;
+using JobTracker.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace JobTracker.Application.Repository.CoreRepository
     {
 
       Task<List<JobApplicationResponseDto>> GetFilterAsync(int userId, JobApplicationfilterDto filter);
+        Task<JobApplication?> GetByIdAsync(int id);
+        Task UpdateAsync(JobApplication app);
 
 
     }

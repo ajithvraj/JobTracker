@@ -9,9 +9,9 @@ namespace JobTracker.Api.Controllers
     public class TestEmailController : ControllerBase
     {
 
-        private readonly IEmailServices _email;
+        private readonly ISmtpServices _email;
 
-        public TestEmailController(IEmailServices email)
+        public TestEmailController(ISmtpServices email)
         {
             _email = email;
 

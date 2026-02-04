@@ -15,11 +15,11 @@ namespace JobTracker.Infrastructure.Services.AuthServices
     public class VerificationService : IVerificationService
     {
         private readonly IDatabase _redis;
-        private readonly IEmailServices _email;
+        private readonly ISmtpServices _email;
 
 
 
-        public VerificationService(IConnectionMultiplexer redis, IEmailServices email)
+        public VerificationService(IConnectionMultiplexer redis, ISmtpServices email)
         {
             _redis = redis.GetDatabase();
             _email = email;

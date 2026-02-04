@@ -2,6 +2,7 @@
 using JobTracker.Application.DTOs.CoreDTOs;
 using JobTracker.Application.Repository.CoreRepository;
 using JobTracker.Domain.Entities;
+using JobTracker.Domain.Enums.ApplicationEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace JobTracker.Application.Core
 
             var company = await _company.GetByName(dto.CompanyName) ?? await _company.CreateAsync(dto.CompanyName);
 
-            //recruiter Optional, not every jobplatforms have recruiters only for company carreer portal  and [ersonal email 
+            //recruiter Optional, not every jobplatforms have recruiters only for company carreer portal  and personal email 
 
             int? recruiterId = null; 
             if(!string.IsNullOrWhiteSpace(dto.RecruiterEmail))
@@ -74,8 +75,12 @@ namespace JobTracker.Application.Core
                 ResumeVersion = dto.ResumeVersion,
                 Status = Domain.Enums.ApplicationEnums.ApplicationStatus.Applied
 
+              
+
+
 
             };
+           
 
             return await _applicatio.CreateAsync(application);
 
@@ -86,6 +91,9 @@ namespace JobTracker.Application.Core
        public async Task<List<JobApplicationResponseDto>> GetAllAsync(int userId)
         {
             return await _applicatio.GetAllByUserAsync(userId);
+
+    
+
 
         }
         public async Task<List<JobApplicationResponseDto>> GetFilteredAsync(
